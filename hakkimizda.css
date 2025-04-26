@@ -1,0 +1,185 @@
+body {
+    background-color: black;
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    color: white;
+}
+
+/* Yıldızlar */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('stardust.png') repeat;
+    animation: twinkle 2s infinite linear;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    z-index: -1;
+}
+
+/* Animasyonlar */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+/* Başlık */
+h1 {
+    font-size: 20px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    margin: 0;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.5s forwards;
+}
+
+/* Paragraf */
+p {
+    margin-top: 100px;
+    padding: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    text-align: center;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 1s forwards;
+}
+
+/* Resimler Container */
+.resimler {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 150px auto 50px;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+/* Resim Kartları */
+.image-card {
+    flex: 1 1 300px; /* Esnek boyutlandırma, minimum 300px */
+    max-width: 400px;
+    position: relative;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+.image-card img {
+    width: 100%;
+    height: 250px; /* Sabit yükseklik */
+    object-fit: cover;
+    display: block;
+}
+
+/* Resim kartları için sıralı animasyon gecikmeleri */
+.image-card:nth-child(1) { animation-delay: 1.2s; }
+.image-card:nth-child(2) { animation-delay: 1.4s; }
+.image-card:nth-child(3) { animation-delay: 1.6s; }
+
+/* Menü ve diğer stiller */
+/* Hamburger buton */
+.hamburger {
+    font-size: 30px;
+    color: white;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+/* Menü başlangıçta gizli */
+.menu {
+    display: none; /* Başlangıçta gizli */
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 999;
+    opacity: 0; /* Başlangıçta görünmez */
+    transform: translateY(-20px); /* Başlangıçta biraz yukarıda */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Yumuşak animasyon */
+}
+
+/* Menü aktif olduğunda görünür */
+.menu.active {
+    display: block;
+    opacity: 1; /* Görünür hale gelir */
+    transform: translateY(0); /* Konumuna gelir */
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-bottom: 15px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #ffcc00;
+}
+
+/* Mobil uyumluluk */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    p {
+        margin-top: 80px;
+        padding: 15px;
+    }
+    
+    .resimler {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .image-card {
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 400px;
+    }
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaf Technology</title>
+    <meta name="description"
+        content="KAF TECHNOLOGY insansiz hava araçlari üzerinde çalişma yapan Karabük Üniversitesinde kurulmuş bir Teknofest Takimidir.">
+    <meta name="keywords" content="İHA SİHA Kaf KAF TECHNOLOGY Karabük Üniversitesi İnsansiz Hava Araçlari Teknofest">
+    <meta http-equiv="content-language" content="tr">
+    <link rel="stylesheet" href="sponsorluklar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Yıldızlı arka plan -->
+    <div class="stars"></div>
+
+    <h1 id="title">SPONSORLUKLAR</h1>
+
+    <!-- Hamburger menü butonu -->
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+
+    <!-- Açılır menü -->
+    <div class="menu" id="menu">
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="Projeler.html">Projeler</a></li>
+            <li><a href="Başarılar.html">Başarılar</a></li>
+            <li><a href="Sponsorluk.html">Sponsorluk</a></li>
+            <li><a href="Hakkımızda.html">Hakkımızda</a></li>
+            <li><a href="iletişim.html">İletişim</a></li>
+        </ul>
+    </div>
+
+    <div class="resimler">
+        <div class="gençlikmerkezi">
+            <img src="Gençlik_ve_Spor_Bakanlığı.svg.png" alt="KarabükGençlikMerkezi">
+        </div>
+        <div class="teknokent">
+            <img src="karabuk-teknokent-logo-20240119103143.jpeg" alt="Teknokent">
+        </div>
+        <div class="KarabükÜniversitesi">
+            <img src="Karabük_Üniversitesi_logosu.png" alt="KarabükÜniversitesi">
+        </div>
+        <div class="Kardökmak">
+            <img src="kardökmak.png" alt="Kardökmak">
+        </div>
+        <div class="çetik">
+            <img src="cetikelektrikelektronik.png" alt="Çetik Group">
+        </div>
+        <div class="nanotech">
+            <img src="media (1).png" alt="nanotech">
+        </div>
+        <div class="Kaim">
+            <img src="kaim.jpg" alt="kaim">
+        </div>
+        <div class="Altium">
+            <img src="altium.png" alt="Altium">
+        </div>
+        <div class="crs">
+            <img src="crs.jpeg" alt="crs">
+        </div>
+        <div class="uludogan">
+            <img src="uludogantech_logo.jpeg" alt="uludogan">
+        </div>
+    </div>
+
+    <script>
+        // Sayfa tamamen yüklendikten sonra animasyonu başlat
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                const title = document.getElementById('title');
+                title.classList.add('show');
+
+                const resimler = document.querySelector('.resimler');
+                resimler.classList.add('show');
+            }, 1000);
+        });
+
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            if (!menu.classList.contains("active")) {
+                menu.style.display = "block";
+                setTimeout(() => {
+                    menu.classList.add("active");
+                }, 10);
+            } else {
+                menu.classList.remove("active");
+                setTimeout(() => {
+                    menu.style.display = "none";
+                }, 300);
+            }
+        }
+        function closeMenu() {
+            const menu = document.getElementById("menu");
+            menu.classList.remove("active"); // Menü kapanırken animasyonu başlat
+            setTimeout(() => {
+                menu.style.display = "none"; // Menü tamamen kapandıktan sonra gizle
+            }, 300); // Animasyon süresi (300ms)
+        }
+
+        // Dokümana tıklama olayı ekle
+        document.addEventListener('click', function (event) {
+            const menu = document.getElementById("menu");
+            const hamburger = document.querySelector('.hamburger');
+
+            // Eğer tıklanan öğe menü veya hamburger değilse ve menü açıksa kapat
+            if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+                if (menu.classList.contains("active")) {
+                    closeMenu();
+                }
+            }
+        });
+
+        // Yeni ve daha etkili kaydırma kodu
+        const slider = document.querySelector('.resimler');
+        let isDragging = false;
+        let startX;
+        let scrollLeft;
+        let momentumID;
+        let velocity = 0;
+        let lastX = 0;
+        let lastTime = 0;
+
+        // Mouse events
+        slider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+            cancelMomentum();
+            e.preventDefault();
+        });
+
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+            slider.classList.remove('active');
+            beginMomentumTracking();
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 1.5; // Kaydırma hızı
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        // Touch events
+        slider.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            slider.classList.add('active');
+            startX = e.touches[0].pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+            cancelMomentum();
+        });
+
+        window.addEventListener('touchend', () => {
+            isDragging = false;
+            slider.classList.remove('active');
+            beginMomentumTracking();
+        });
+
+        slider.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.touches[0].pageX - slider.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        // Momentum efekti fonksiyonları
+        function beginMomentumTracking() {
+            cancelMomentum();
+            lastX = slider.scrollLeft;
+            lastTime = performance.now();
+            momentumID = requestAnimationFrame(momentumLoop);
+        }
+
+        function cancelMomentum() {
+            cancelAnimationFrame(momentumID);
+        }
+
+        function momentumLoop(currentTime) {
+            const deltaTime = currentTime - lastTime;
+            if (deltaTime > 0) {
+                const deltaX = (slider.scrollLeft - lastX) / deltaTime;
+                velocity = deltaX * 0.95; // Sürtünme efekti
+                lastX = slider.scrollLeft;
+                lastTime = currentTime;
+
+                if (Math.abs(velocity) > 0.5) {
+                    slider.scrollLeft += velocity * 16;
+                    momentumID = requestAnimationFrame(momentumLoop);
+                }
+            } else {
+                momentumID = requestAnimationFrame(momentumLoop);
+            }
+        }
+    </script>
+</body>
+
+</html>

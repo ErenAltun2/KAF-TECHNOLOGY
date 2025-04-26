@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaf Technology</title>
+    <meta name="description"
+        content="KAF TECHNOLOGY insansiz hava araçlari üzerinde çalişma yapan Karabük Üniversitesinde kurulmuş bir Teknofest Takimidir.">
+    <meta name="keywords" content="İHA SİHA Kaf KAF TECHNOLOGY Karabük Üniversitesi İnsansiz Hava Araçlari Teknofest">
+    <meta http-equiv="content-language" content="tr">
+    <link rel="stylesheet" href="hakkimizda.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Menü başlangıçta gizli */
+        .menu {
+            display: none;
+            /* Başlangıçta gizli */
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 999;
+            opacity: 0;
+            /* Başlangıçta görünmez */
+            transform: translateY(-20px);
+            /* Başlangıçta biraz yukarıda */
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            /* Yumuşak animasyon */
+        }
+
+        /* Menü aktif olduğunda görünür */
+        .menu.active {
+            display: block;
+            opacity: 1;
+            /* Görünür hale gelir */
+            transform: translateY(0);
+            /* Konumuna gelir */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Yıldızlı arka plan -->
+    <div class="stars"></div>
+
+    <h1 id="title">HAKKIMIZDA</h1>
+    <p>KAF TECHNOLOGY, 2022 yılında üniversite öğrencileri tarafından kurulan misyonunu ülkesine ve milletine faydalı,
+        geleceğe ışık olan, yön gösteren bir takım olarak çağın teknolojisini yakalayıp, inovasyonla önüne geçmeyi
+        hedefleyen istikrarlı, zireye odaklı proje ve görevleri kendine vizyon edinen bir teknoloji takımıdır. </p>
+    <div class="resimler">
+        <div class="image-card">
+            <img src="takım foto.jpeg" alt="Baybars İHA">
+        </div>
+        <div class="image-card">
+            <img src="dekan sosyalfest.jpeg" alt="Baybars İHA">
+        </div>
+
+    </div>
+
+    <!-- Hamburger menü butonu -->
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+
+    <!-- Açılır menü -->
+    <div class="menu" id="menu">
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="Projeler.html">Projeler</a></li>
+            <li><a href="Başarılar.html">Başarılar</a></li>
+            <li><a href="Sponsorluk.html">Sponsorluk</a></li>
+            <li><a href="Hakkımızda.html">Hakkımızda</a></li>
+            <li><a href="iletişim.html">İletişim</a></li>
+        </ul>
+    </div>
+
+    <script>
+        // Sayfa tamamen yüklendikten sonra animasyonu başlat
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                const title = document.getElementById('title');
+                title.classList.add('show');
+            }, 1000); // 2 saniye sonra animasyonu başlat
+        });
+
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+
+            // Menü açıldığında
+            if (!menu.classList.contains("active")) {
+                menu.style.display = "block"; // Menü açıldığında görünür yap
+                setTimeout(() => {
+                    menu.classList.add("active"); // Menü animasyonla açılır
+                }, 10); // Animasyonun başlaması için küçük bir gecikme
+            } else {
+                menu.classList.remove("active"); // Menü kapanırken animasyonu başlat
+                setTimeout(() => {
+                    menu.style.display = "none"; // Menü tamamen kapandıktan sonra gizle
+                }, 300); // Animasyon süresi (300ms)
+            }
+        }
+        function closeMenu() {
+            const menu = document.getElementById("menu");
+            menu.classList.remove("active"); // Menü kapanırken animasyonu başlat
+            setTimeout(() => {
+                menu.style.display = "none"; // Menü tamamen kapandıktan sonra gizle
+            }, 300); // Animasyon süresi (300ms)
+        }
+
+        // Dokümana tıklama olayı ekle
+        document.addEventListener('click', function (event) {
+            const menu = document.getElementById("menu");
+            const hamburger = document.querySelector('.hamburger');
+
+            // Eğer tıklanan öğe menü veya hamburger değilse ve menü açıksa kapat
+            if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+                if (menu.classList.contains("active")) {
+                    closeMenu();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,231 @@
+body {
+    background-color: black;
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 20px; /* Ekledim */
+    min-height: 100vh; /* height yerine min-height kullandım */
+    position: relative;
+    overflow: hidden;
+    color: white; /* Tüm metinler için beyaz renk */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+p {
+    margin-top: 120px; /* Başlıktan boşluk bırak */
+    padding: 20px;
+    max-width: 800px; /* Okunabilirlik için maksimum genişlik */
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1; /* Yıldızların üstünde görünsün */
+    line-height: 1.6; /* Satır aralığı */
+    text-align: justify; /* Metni iki yana hizala */
+    opacity: 0; /* Başlangıçta görünmez */
+    animation: fadeInUp 1s ease-out 1s forwards; /* 1s gecikmeli */
+}
+/* Yıldızlar */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('stardust.png') repeat;
+    animation: twinkle 2s infinite linear;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    z-index: -1; /* Arka plana gönder */
+}
+/* Yıldızların animasyonu */
+@keyframes twinkle {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+/* Başlık: sol üst köşeye taşındı */
+h1 {
+    top: 20px;
+    left: 20px;
+    z-index: 10; /* Diğer içeriklerin üstünde */
+    /* Diğer stiller aynı */
+    font-size: 30px;
+    opacity: 0; /* Başlangıçta görünmez */
+    animation: fadeInUp 1s ease-out 0.5s forwards; /* 0.5s gecikmeli */
+    font-size: 20px;
+}
+
+
+
+/* "Kaf Technology" yazısının görünmesi için eklenen sınıf */
+h1.show {
+    opacity: 1;
+}
+
+/* Hamburger buton */
+.hamburger {
+    font-size: 30px;
+    color: white;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+/* Menü başlangıçta gizli */
+.menu {
+    display: none; /* Başlangıçta gizli */
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 999;
+    opacity: 0; /* Başlangıçta görünmez */
+    transform: translateY(-20px); /* Başlangıçta biraz yukarıda */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Yumuşak animasyon */
+}
+
+/* Menü aktif olduğunda görünür */
+.menu.active {
+    display: block;
+    opacity: 1; /* Görünür hale gelir */
+    transform: translateY(0); /* Konumuna gelir */
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-bottom: 15px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #ffcc00;
+}
+.resimler {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; /* Resimler arası boşluk */
+    margin-top: 150px; /* Başlık ve paragraftan sonra başlasın */
+    padding-bottom: 50px; /* Sayfa sonunda boşluk */
+    max-width: 1400px; /* Maksimum genişlik */
+    margin-left: auto;
+    margin-right: auto;
+}
+.resimler img {
+    width: calc(50% - 30px); /* 2 resim yan yana, boşlukları çıkar */
+    max-width: 650px; /* Maksimum genişlik */
+    height: auto; /* Oranları koru */
+    object-fit: cover; /* Resimlerin boyutları farklıysa düzgün gösterim */
+    border-radius: 10px; /* Köşeleri yuvarlak */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Hafif gölge */
+    transition: transform 0.3s ease; /* Hover efekti için */
+}
+.resimler img:hover {
+    transform: scale(1.03); /* Hafif büyütme */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Gölgeyi artır */
+}
+@media (max-width: 768px) {
+    .resimler img {
+        width: 100%; /* Mobilde tek sütun */
+        max-width: 100%;
+    }
+    
+    h1 {
+        font-size: 36px; /* Başlık boyutunu küçült */
+    }
+    
+    p {
+        margin-top: 100px;
+        padding: 15px;
+    }
+}
+.image-card {
+    width: calc(50% - 30px);
+    max-width: 650px;
+    margin-bottom: 40px;
+    position: relative;
+    opacity: 0; /* Başlangıçta görünmez */
+    animation: fadeInUp 1s ease-out 0.5s forwards; /* 0.5s gecikmeli */
+
+}
+
+.image-description {
+    background-color: rgba(26, 26, 26, 0.8);
+    padding: 15px;
+    border-radius: 0 0 10px 10px;
+    margin-top: -5px; /* Resimle arasındaki boşluğu kapatmak için */
+}
+
+.image-description h3 {
+    color: #ffcc00;
+    margin: 0 0 8px 0;
+    font-size: 1.4em;
+}
+
+.image-description p {
+    color: #e0e0e0;
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.4;
+    text-align: left;
+    padding: 0;
+}
+
+/* Mobil uyumluluk */
+@media (max-width: 768px) {
+    .image-card {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .image-description {
+        padding: 12px;
+    }
+    
+    .image-description h3 {
+        font-size: 1.2em;
+    }
+    
+    .image-description p {
+        font-size: 0.9em;
+    }
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
