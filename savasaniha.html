@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaf Technology</title>
+    <meta name="description"
+        content="KAF TECHNOLOGY insansiz hava araçlari üzerinde çalişma yapan Karabük Üniversitesinde kurulmuş bir Teknofest Takimidir.">
+    <meta name="keywords" content="İHA SİHA Kaf KAF TECHNOLOGY Karabük Üniversitesi İnsansiz Hava Araçlari Teknofest">
+    <meta http-equiv="content-language" content="tr">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            color: white;
+        }
+
+        /* Yıldızlar */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('stardust.png') repeat;
+            animation: twinkle 2s infinite linear;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            z-index: -1;
+        }
+
+        /* Animasyonlar */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Başlık */
+        h1 {
+            font-size: 20px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            margin: 0;
+            z-index: 10;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        /* Paragraf */
+        p {
+            margin-top: 100px;
+            padding: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+
+        /* Videolar Container */
+        .videolar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 150px auto 50px;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        /* Video Kartları */
+        .video-card {
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.2s forwards;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        .video-card video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Hamburger buton */
+        .hamburger {
+            font-size: 30px;
+            color: white;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        /* Menü başlangıçta gizli */
+        .menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Menü aktif olduğunda görünür */
+        .menu.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li {
+            margin-bottom: 15px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #ffcc00;
+        }
+
+        /* Mobil uyumluluk */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                margin-top: 80px;
+                padding: 15px;
+            }
+
+            .videolar {
+                margin: 100px auto 50px;
+                padding: 0 10px;
+            }
+
+            .video-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Yıldızlı arka plan -->
+    <div class="stars"></div>
+
+    <h1 id="title">TeknofestSavaşanİha</h1>
+
+
+    <div class="videolar">
+        <div class="video-card">
+            <video controls>
+                <source src="savasaniha.mp4" type="video/mp4">
+                <source src="savasaniha.webm" type="video/webm">
+                <source src="savasaniha.ogg" type="video/ogg">
+                Tarayıcınız video oynatmayı desteklemiyor.
+            </video>
+        </div>
+    </div>
+
+    <!-- Hamburger menü butonu -->
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+
+    <!-- Açılır menü -->
+    <div class="menu" id="menu">
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="Projeler.html">Projeler</a></li>
+            <li><a href="Başarılar.html">Başarılar</a></li>
+            <li><a href="Sponsorluk.html">Sponsorluk</a></li>
+            <li><a href="Hakkımızda.html">Hakkımızda</a></li>
+            <li><a href="iletişim.html">İletişim</a></li>
+            <li><a href="savasaniha.html">TeknofestSavaşanİha</a></li>
+
+
+        </ul>
+    </div>
+
+    <script>
+        // Sayfa tamamen yüklendikten sonra animasyonu başlat
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                const title = document.getElementById('title');
+                title.classList.add('show');
+            }, 1000);
+        });
+
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+
+            if (!menu.classList.contains("active")) {
+                menu.style.display = "block";
+                setTimeout(() => {
+                    menu.classList.add("active");
+                }, 10);
+            } else {
+                menu.classList.remove("active");
+                setTimeout(() => {
+                    menu.style.display = "none";
+                }, 300);
+            }
+        }
+
+        function closeMenu() {
+            const menu = document.getElementById("menu");
+            menu.classList.remove("active");
+            setTimeout(() => {
+                menu.style.display = "none";
+            }, 300);
+        }
+
+        document.addEventListener('click', function (event) {
+            const menu = document.getElementById("menu");
+            const hamburger = document.querySelector('.hamburger');
+
+            if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+                if (menu.classList.contains("active")) {
+                    closeMenu();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

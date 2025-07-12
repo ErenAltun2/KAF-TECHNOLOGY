@@ -1,0 +1,170 @@
+body {
+    background-color: black;
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Yıldızlar */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('stardust.png') repeat;
+    animation: twinkle 2s infinite linear;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    z-index: 0;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+.content-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+}
+
+.content-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+h1 {
+    color: white;
+    font-size: 50px;
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity 1s ease, transform 1s ease;
+    z-index: 2;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    position: relative; /* Yeni ekledik */
+    margin-bottom: 120px; /* Uçak için alt boşluk */
+}
+
+h1.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hamburger {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    color: white;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    background-color: rgba(26, 26, 26, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-bottom: 12px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #ffcc00;
+}
+
+#scene-container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    z-index: 1;
+    pointer-events: none;
+    transform: translateY(-70%);
+}
+.resim {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    pointer-events: none;
+    width: 300px;
+    opacity: 0;
+    transform: translate(-50%, -30px); /* Başlangıç pozisyonu */
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.resim.show {
+    opacity: 1;
+    transform: translate(-50%, -50%); /* Son pozisyon */
+}
+
+
+.resim img {
+    width: 100%;
+    height: auto;
+    opacity: 1; /* Resmin şeffaflığını ayarlayabilirsiniz */
+}
+@media (max-width: 768px) {
+    #scene-container {
+        top: 40%;
+        height: 40%;
+        transform: translateY(-50%);
+    }
+    
+    .resim {
+        width: 200px;
+        top: 42%;
+    }
+    
+    h1 {
+        font-size: 36px;
+        margin-bottom: 80px;
+    }
+}
