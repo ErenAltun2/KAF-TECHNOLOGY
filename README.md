@@ -85,16 +85,3 @@ Takımımızla iş birliği, sponsorluk veya doğrudan temas için:
 </p>
 
 ---
-
-## 🛠️ Kurulum & Yerel Çalıştırma
-
-Projeyi yerel ortamınızda görüntülemek için:
-
-```bash
-# 1. Depoyu klonlayın
-git clone [https://github.com/kullanici-adi/repo-adi.git](https://github.com/kullanici-adi/repo-adi.git)
-
-# 2. Proje dizinine geçin
-cd repo-adi
-
-# 3. index.html dosyasını tarayıcınızda açın
