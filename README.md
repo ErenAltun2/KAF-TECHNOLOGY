@@ -39,7 +39,7 @@ Takımın simgesi ve felsefesini yansıtan karşılama ekranı.
 > *"KAF TECHNOLOGY, 2022 yılında üniversite öğrencileri tarafından kurulan misyonunu ülkesine ve milletine faydalı, geleceğe ışık olan, yön gösteren bir takım olarak çağın teknolojisini yakalayıp, inovasyonla önüne geçmeyi hedefleyen istikrarlı, zirveye odaklı proje ve görevleri kendine vizyon edinen bir teknoloji takımıdır."*
 
 <p align="center">
-  <img src="images/hakkimizda.jpg" alt="Hakkımızda" width="85%">
+  <img src="images/hakkimizda.png" alt="Hakkımızda" width="85%">
 </p>
 
 ---
@@ -51,7 +51,7 @@ Kurulduğu zamandan beri her yıl Teknofest ve TÜBİTAK yarışmalarında final
 * **Atakan Projesi:** 2024 Teknofest Uluslararası İHA Yarışması
 
 <p align="center">
-  <img src="images/projects.jpg" alt="Projeler" width="85%">
+  <img src="images/projects.png" alt="Projeler" width="85%">
 </p>
 
 ---
